@@ -1,8 +1,8 @@
 {
-  "name": "balena-typescript-skeleton",
+  "name": "@balena/gsheet-utils",
   "version": "0.1.0",
-  "description": "Skeleton template for a balena TypeScript project",
-  "homepage": "https://github.com/balena-io-playground/product-os-gsheet-utils#readme",
+  "description": "Common Apps Script / JS / TS functions used by balena data models in GSheet",
+  "homepage": "https://github.com/product-os/gsheet-utils#readme",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "keywords": [
@@ -13,10 +13,10 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/balena-io-playground/product-os-gsheet-utils.git"
+    "url": "git+https://github.com/product-os/gsheet-utils.git"
   },
   "bugs": {
-    "url": "https://github.com/balena-io-playground/product-os-gsheet-utils/issues"
+    "url": "https://github.com/product-os/gsheet-utils/issues"
   },
   "files": [
     "build/"
