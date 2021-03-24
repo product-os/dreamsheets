@@ -12,6 +12,7 @@
 		"skipLibCheck": true
 	},
 	"include": [
-		"lib/**/*.ts"
+		"lib/**/*.ts",
+		"typings/*.d.ts"
 	]
 }
