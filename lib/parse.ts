@@ -2,7 +2,7 @@ interface Dictionary<T> {
 	[key: string]: T;
 }
 
-type FieldsWithOptionalFunction = Array<
+export type FieldsWithOptionalFunction = Array<
 	[string, string] | [string, string, (...args: any) => any]
 >;
 
