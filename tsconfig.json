@@ -7,9 +7,12 @@
 		"removeComments": true,
 		"sourceMap": true,
 		"strict": true,
-		"target": "es2015",
+		"target": "ES2019",
 		"declaration": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"lib": ["esnext"],
+		"experimentalDecorators": true
 	},
 	"include": [
 		"lib/**/*.ts",
