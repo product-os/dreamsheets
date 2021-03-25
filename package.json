@@ -1,6 +1,6 @@
 {
   "name": "@balena/gsheet-utils",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Common Apps Script / JS / TS functions used by balena data models in GSheet",
   "homepage": "https://github.com/product-os/gsheet-utils#readme",
   "main": "build/index.js",
