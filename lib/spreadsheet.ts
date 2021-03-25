@@ -79,3 +79,20 @@ export const writeToSheet = function (
 		.getRange(startingRow, startingColumn, rows, cols)
 		.setValues(writeArray);
 };
+
+/**
+ * Generic function for reading content of tab in Google Sheet.
+ * @param sheetID ID of Google Sheet.
+ * @param tabName Name of tab in Google Sheet.
+ * @returns Raw sheet content as nested array.
+ */
+ export const readGoogleSheetTab = (
+	sheetID: string,
+	tabName: string,
+): any[][] => {
+	const tab = SpreadsheetApp.openById(sheetID).getSheetByName(tabName);
+	const rawData = tab
+		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
+		?.getValues();
+	return rawData || [];
+};
