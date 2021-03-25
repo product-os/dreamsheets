@@ -1,2 +1,7 @@
-export { parseRange } from './parse';
-export { clearSheet, updateSheet, writeToSheet, readGoogleSheetTab } from './spreadsheet';
+export { parseRange, FieldsWithOptionalFunction } from './parse';
+export {
+	clearSheet,
+	updateSheet,
+	writeToSheet,
+	readGoogleSheetTab,
+} from './spreadsheet';
