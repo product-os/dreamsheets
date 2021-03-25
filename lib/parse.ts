@@ -1,14 +1,16 @@
 interface Dictionary<T> {
-	[key: string]: T;
+	[index: string]: T;
 }
+
+type AnyObject = Dictionary<any>;
 
 export type FieldsWithOptionalFunction = Array<
 	[string, string] | [string, string, (...args: any) => any]
 >;
 
-const identity = <T>(arg: T) => {
+function identity<T>(arg: T) {
 	return arg;
-};
+}
 
 export function parseRange(
 	fields: FieldsWithOptionalFunction,
@@ -31,7 +33,7 @@ export function parseRange(
 		if (data[i][0] === '') {
 			break;
 		}
-		const obj: Dictionary<any> = {};
+		const obj: AnyObject = {};
 		for (let j = 0; j < fields.length; j++) {
 			const transform = fields[j][2] || identity;
 			obj[fields[j][1]] = transform(data[i][j]);

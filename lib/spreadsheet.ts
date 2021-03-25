@@ -1,4 +1,3 @@
-// TODO: Re-package and re-use such utility functions in all spreadsheet repos
 export function clearSheet(
 	sheet: GoogleAppsScript.Spreadsheet.Sheet,
 	startingRow: number = 1,
@@ -15,7 +14,7 @@ export function clearSheet(
  * .. srow and scol are the starting cell for the output
  * .. errorTab lists the errors raised when running the function
  */
-export const updateSheet = function (
+export function updateSheet(
 	func: (...args: any[]) => any[][],
 	params: any[],
 	outputSheetName: string,
@@ -51,9 +50,9 @@ export const updateSheet = function (
 	}
 
 	console.log(`Done running ${func.name}`);
-};
+}
 
-export const writeToSheet = function (
+export function writeToSheet(
 	outputSheetName: string,
 	startingRow: number,
 	startingColumn: number,
@@ -78,21 +77,17 @@ export const writeToSheet = function (
 	outputSheet
 		.getRange(startingRow, startingColumn, rows, cols)
 		.setValues(writeArray);
-};
+}
 
 /**
  * Generic function for reading content of tab in Google Sheet.
- * @param sheetID ID of Google Sheet.
  * @param tabName Name of tab in Google Sheet.
  * @returns Raw sheet content as nested array.
  */
- export const readGoogleSheetTab = (
-	sheetID: string,
-	tabName: string,
-): any[][] => {
-	const tab = SpreadsheetApp.openById(sheetID).getSheetByName(tabName);
+export function readGoogleSheetTab(tabName: string): any[][] {
+	const tab = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tabName);
 	const rawData = tab
 		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
 		?.getValues();
 	return rawData || [];
-};
+}
