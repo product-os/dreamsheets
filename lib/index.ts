@@ -1,2 +1,2 @@
 export { parseRange } from './parse';
-export { clearSheet, updateSheet, writeToSheet } from './spreadsheet';
+export { clearSheet, updateSheet, writeToSheet, readGoogleSheetTab } from './spreadsheet';
