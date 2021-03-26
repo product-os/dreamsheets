@@ -29,7 +29,7 @@ interface ColumnTypeInfo {
 	required: boolean;
 }
 
-interface ConfigByColumn {
+export interface ConfigByColumn {
 	[columnName: string]: ColumnTypeInfo;
 }
 
@@ -39,7 +39,7 @@ export function validateSheet(
 	sheetName: string,
 	_dataToValidate?: any[][],
 ) {
-	getConfigForSheet(spreadsheet, sheet, sheetName);
+	return getConfigForSheet(spreadsheet, sheet, sheetName);
 	// TODO: validate dataToValidate :-)
 }
 
