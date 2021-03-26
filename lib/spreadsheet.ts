@@ -85,9 +85,16 @@ export function writeToSheet(
  * @returns Raw sheet content as nested array.
  */
 export function readGoogleSheetTab(tabName: string): any[][] {
-	const tab = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tabName);
+	const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+	const tab = spreadsheet.getSheetByName(tabName);
 	const rawData = tab
 		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
 		?.getValues();
+
+	const {
+		validateSheet,
+	} = require('./validation') as typeof import('./validation');
+	validateSheet(spreadsheet, tab, tabName, rawData);
+
 	return rawData || [];
 }
