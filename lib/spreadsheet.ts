@@ -1,3 +1,10 @@
+import { ConfigByColumn } from './validation';
+
+export interface SheetContents {
+	data: any[][] | [];
+	config: ConfigByColumn | undefined;
+}
+
 export function clearSheet(
 	sheet: GoogleAppsScript.Spreadsheet.Sheet,
 	startingRow: number = 1,
@@ -84,10 +91,24 @@ export function writeToSheet(
  * @param tabName Name of tab in Google Sheet.
  * @returns Raw sheet content as nested array.
  */
-export function readGoogleSheetTab(tabName: string): any[][] {
-	const tab = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tabName);
+export function readGoogleSheetTab(tabName: string): SheetContents {
+	const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+	const tab = spreadsheet.getSheetByName(tabName);
 	const rawData = tab
 		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
 		?.getValues();
-	return rawData || [];
+	const {
+		validateSheet,
+	} = require('./validation') as typeof import('./validation');
+	const sheetConfig: ConfigByColumn | undefined = validateSheet(
+		spreadsheet,
+		tab,
+		tabName,
+		rawData,
+	);
+	const sheetContents: SheetContents = {
+		data: rawData || [],
+		config: sheetConfig,
+	};
+	return sheetContents;
 }
