@@ -35,7 +35,12 @@ export function updateSheet(
 		res = func(...params);
 	} catch (err) {
 		const now = new Date();
-		logSheet.appendRow([now, func.name, err.message, err.stack]);
+		logSheet.appendRow([
+			now,
+			func.name,
+			(err as Error).message,
+			(err as Error).stack,
+		]);
 	}
 	if (res != null) {
 		writeToSheet(
