@@ -92,27 +92,22 @@ export function writeToSheet(
  * @returns Raw sheet content as nested array.
  */
 export function readGoogleSheetTab(tabName: string): SheetContents {
-	const {
-		validateSheet,
-		ValidationError,
-	} = require('./validation') as typeof import('./validation');
 	const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
 	const tab = spreadsheet.getSheetByName(tabName);
-	if (!tab) {
-		throw new ValidationError(
-			`Tab "${tabName}" was not found in spreadsheet "${spreadsheet.getName()}"`,
-		);
-	}
-	const rawData =
-		tab?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())?.getValues() ||
-		[];
+	const rawData = tab
+		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
+		?.getValues();
+	const {
+		validateSheet,
+	} = require('./validation') as typeof import('./validation');
 	const sheetConfig: ConfigByColumn | undefined = validateSheet(
 		spreadsheet,
 		tab,
+		tabName,
 		rawData,
 	);
 	const sheetContents: SheetContents = {
-		data: rawData,
+		data: rawData || [],
 		config: sheetConfig,
 	};
 	return sheetContents;
