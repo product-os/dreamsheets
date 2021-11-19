@@ -4,6 +4,4 @@ export {
 	updateSheet,
 	writeToSheet,
 	readGoogleSheetTab,
-	SheetContents,
 } from './spreadsheet';
-export { ConfigByColumn } from './validation';
