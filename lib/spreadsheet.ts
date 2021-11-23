@@ -84,15 +84,44 @@ export function writeToSheet(
 		.setValues(writeArray);
 }
 
-/**
- * Generic function for reading content of tab in Google Sheet.
- * @param tabName Name of tab in Google Sheet.
- * @returns Raw sheet content as nested array.
- */
-export function readGoogleSheetTab(tabName: string): any[][] {
-	const tab = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tabName);
-	const rawData = tab
-		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
-		?.getValues();
-	return rawData || [];
+export function readSheet(
+	sheetName: string,
+	{
+		range,
+		spreadSheet,
+	}: {
+		range?: string | [number, number, number, number];
+		spreadSheet?: GoogleAppsScript.Spreadsheet.Spreadsheet;
+	} = {},
+): any[][] {
+	// If no spreadsheet provided, read the currently active spreadsheet:
+	if (!spreadSheet) {
+		spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+	}
+	const spreadSheetName = spreadSheet.getName();
+	const sheet = spreadSheet.getSheetByName(sheetName);
+
+	// Check for existence of sheet in spreadsheet:
+	if (!sheet) {
+		throw new Error(
+			`Sheet "${sheetName}" does not exist in spreadsheet "${spreadSheetName}"!`,
+		);
+	}
+
+	// If no range provided, default to the full data-containing range in the sheet:
+	if (!range) {
+		range = [1, 1, sheet.getLastRow(), sheet.getLastColumn()];
+	}
+
+	// Read data from sheet:
+	let rangeData: any[][];
+	if (typeof range === 'string') {
+		rangeData = sheet.getRange(range).getValues();
+	} else {
+		rangeData = sheet.getRange(...range).getValues();
+	}
+	console.log(
+		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${spreadSheetName}".`,
+	);
+	return rangeData;
 }
