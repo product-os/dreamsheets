@@ -1,3 +1,8 @@
+type RangeTuple =
+	| [number, number]
+	| [number, number, number]
+	| [number, number, number, number];
+
 export function clearSheet(
 	sheet: GoogleAppsScript.Spreadsheet.Sheet,
 	startingRow: number = 1,
@@ -88,40 +93,43 @@ export function readSheet(
 	sheetName: string,
 	{
 		range,
-		spreadSheet,
+		ss,
 	}: {
-		range?: string | [number, number, number, number];
-		spreadSheet?: GoogleAppsScript.Spreadsheet.Spreadsheet;
+		range?: string | RangeTuple;
+		ss?: GoogleAppsScript.Spreadsheet.Spreadsheet;
 	} = {},
-): any[][] {
+) {
 	// If no spreadsheet provided, read the currently active spreadsheet:
-	if (!spreadSheet) {
-		spreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+	if (!ss) {
+		ss = SpreadsheetApp.getActiveSpreadsheet();
 	}
-	const spreadSheetName = spreadSheet.getName();
-	const sheet = spreadSheet.getSheetByName(sheetName);
+	const ssName = ss.getName();
+	const sheet = ss.getSheetByName(sheetName);
 
 	// Check for existence of sheet in spreadsheet:
 	if (!sheet) {
 		throw new Error(
-			`Sheet "${sheetName}" does not exist in spreadsheet "${spreadSheetName}"!`,
+			`Sheet "${sheetName}" does not exist in spreadsheet "${ssName}"!`,
 		);
 	}
-
-	// If no range provided, default to the full data-containing range in the sheet:
+	// Read data from sheet (if no range provided, default to the full data-containing range in the sheet):
+	let rangeValues: any[][] = []
 	if (!range) {
-		range = [1, 1, sheet.getLastRow(), sheet.getLastColumn()];
-	}
-
-	// Read data from sheet:
-	let rangeData: any[][];
-	if (typeof range === 'string') {
-		rangeData = sheet.getRange(range).getValues();
+		rangeValues = sheet.getDataRange().getValues();
 	} else {
-		rangeData = sheet.getRange(...range).getValues();
+		// The extended if-else blocks below constitute a workaround for this issue: https://github.com/microsoft/TypeScript/issues/14107
+		if (typeof range === 'string') {
+			rangeValues = sheet.getRange(range).getValues();
+		} else if (range.length === 2) {
+			rangeValues = sheet.getRange(...range).getValues();
+		} else if (range.length === 3) {
+			rangeValues = sheet.getRange(...range).getValues();
+		} else if (range.length === 4) {
+			rangeValues = sheet.getRange(...range).getValues();
+		}
 	}
 	console.log(
-		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${spreadSheetName}".`,
+		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${ssName}".`,
 	);
-	return rangeData;
+	return rangeValues;
 }
