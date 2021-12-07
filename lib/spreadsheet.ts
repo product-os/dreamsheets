@@ -1,3 +1,8 @@
+type RangeTuple =
+	| [number, number]
+	| [number, number, number]
+	| [number, number, number, number];
+
 export function clearSheet(
 	sheet: GoogleAppsScript.Spreadsheet.Sheet,
 	startingRow: number = 1,
@@ -84,15 +89,47 @@ export function writeToSheet(
 		.setValues(writeArray);
 }
 
-/**
- * Generic function for reading content of tab in Google Sheet.
- * @param tabName Name of tab in Google Sheet.
- * @returns Raw sheet content as nested array.
- */
-export function readGoogleSheetTab(tabName: string): any[][] {
-	const tab = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(tabName);
-	const rawData = tab
-		?.getRange(1, 1, tab.getMaxRows(), tab.getMaxColumns())
-		?.getValues();
-	return rawData || [];
+export function readSheet(
+	sheetName: string,
+	{
+		range,
+		ss,
+	}: {
+		range?: string | RangeTuple;
+		ss?: GoogleAppsScript.Spreadsheet.Spreadsheet;
+	} = {},
+) {
+	// If no spreadsheet provided, read the currently active spreadsheet:
+	if (!ss) {
+		ss = SpreadsheetApp.getActiveSpreadsheet();
+	}
+	const ssName = ss.getName();
+	const sheet = ss.getSheetByName(sheetName);
+
+	// Check for existence of sheet in spreadsheet:
+	if (!sheet) {
+		throw new Error(
+			`Sheet "${sheetName}" does not exist in spreadsheet "${ssName}"!`,
+		);
+	}
+	// Read data from sheet (if no range provided, default to the full data-containing range in the sheet):
+	let rangeValues: any[][] = []
+	if (!range) {
+		rangeValues = sheet.getDataRange().getValues();
+	} else {
+		// The extended if-else blocks below constitute a workaround for this issue: https://github.com/microsoft/TypeScript/issues/14107
+		if (typeof range === 'string') {
+			rangeValues = sheet.getRange(range).getValues();
+		} else if (range.length === 2) {
+			rangeValues = sheet.getRange(...range).getValues();
+		} else if (range.length === 3) {
+			rangeValues = sheet.getRange(...range).getValues();
+		} else if (range.length === 4) {
+			rangeValues = sheet.getRange(...range).getValues();
+		}
+	}
+	console.log(
+		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${ssName}".`,
+	);
+	return rangeValues;
 }

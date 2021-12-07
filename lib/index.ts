@@ -3,5 +3,5 @@ export {
 	clearSheet,
 	updateSheet,
 	writeToSheet,
-	readGoogleSheetTab,
+	readSheet,
 } from './spreadsheet';
