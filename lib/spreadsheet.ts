@@ -3,28 +3,23 @@ type RangeTuple =
 	| [number, number, number]
 	| [number, number, number, number];
 
-
 export function readSheet(
 	sheetName: string,
 	{
 		range,
-		ss,
+		spreadsheet = SpreadsheetApp.getActiveSpreadsheet(),
 	}: {
 		range?: string | RangeTuple;
-		ss?: GoogleAppsScript.Spreadsheet.Spreadsheet;
+		spreadsheet?: GoogleAppsScript.Spreadsheet.Spreadsheet;
 	} = {},
 ) {
-	// If no spreadsheet provided, read the currently active spreadsheet:
-	if (!ss) {
-		ss = SpreadsheetApp.getActiveSpreadsheet();
-	}
-	const ssName = ss.getName();
-	const sheet = ss.getSheetByName(sheetName);
+	const spreadsheetName = spreadsheet.getName();
+	const sheet = spreadsheet.getSheetByName(sheetName);
 
 	// Check for existence of sheet in spreadsheet:
 	if (!sheet) {
 		throw new Error(
-			`Sheet "${sheetName}" does not exist in spreadsheet "${ssName}"!`,
+			`Sheet "${sheetName}" does not exist in spreadsheet "${spreadsheetName}"!`,
 		);
 	}
 	// Read data from sheet (if no range provided, default to the full data-containing range in the sheet):
@@ -44,7 +39,7 @@ export function readSheet(
 		}
 	}
 	console.log(
-		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${ssName}".`,
+		`Successfully read contents of sheet "${sheetName}" in spreadsheet "${spreadsheetName}".`,
 	);
 	return rangeValues;
 }
@@ -54,49 +49,37 @@ export function writeToSheet(
 	sheetName: string,
 	writeArray: any[][],
 	{
-		startRow,
-		startColumn,
+		startRow = 1,
+		startColumn = 1,
 		templateSheetName,
-		ss,
-		eraseAllDataInSheet,
-		onlyWriteIfEmpty
+		spreadsheet = SpreadsheetApp.getActiveSpreadsheet(),
+		clearSheet = false,
+		overwriteRange = true
 	}: {
 		startRow?: number,
 		startColumn?: number,
 		templateSheetName?: string,
-		ss?: GoogleAppsScript.Spreadsheet.Spreadsheet,
-		eraseAllDataInSheet?: boolean,		
-		onlyWriteIfEmpty?: boolean
+		spreadsheet?: GoogleAppsScript.Spreadsheet.Spreadsheet,
+		clearSheet?: boolean,		
+		overwriteRange?: boolean
 	} = {}
 	) {
-	// If no spreadsheet provided, read the currently active spreadsheet:
-	if (!ss) {
-		ss = SpreadsheetApp.getActiveSpreadsheet();
-	}
-	const ssName = ss.getName();
-	let sheet = ss.getSheetByName(sheetName);
+	const spreadsheetName = spreadsheet.getName();
+	let sheet = spreadsheet.getSheetByName(sheetName);
 
 	// Check whether template was provided:
-	let templateSheet
+	let templateSheet = undefined
 	if (templateSheetName) {
-		templateSheet = ss.getSheetByName(templateSheetName)
+		templateSheet = spreadsheet.getSheetByName(templateSheetName)
 		if (!templateSheet) {
-			throw new Error(`A template sheet named ${templateSheetName} does not exist in spreadsheet "${ssName}"!`)
+			throw new Error(`A template sheet named "${templateSheetName}" does not exist in spreadsheet "${spreadsheetName}"!`)
 		}		
 	}
 
 	// Check for existence of sheet in spreadsheet:
 	if (!sheet) {			
-		sheet = ss.insertSheet(sheetName, {template: templateSheet})
-		console.log(`Sheet ${sheetName} created in spreadsheet ${ssName}.`)
-	}
-
-	// Check whether starting row and column were provided:
-	if (!startRow) {
-		startRow = 1
-	}
-	if (!startColumn) {
-		startColumn = 1
+		sheet = spreadsheet.insertSheet(sheetName, {template: templateSheet})
+		console.log(`Sheet ${sheetName} created in spreadsheet ${spreadsheetName}.`)
 	}
 
 	// Output dimensions:
@@ -105,17 +88,16 @@ export function writeToSheet(
 
 	// Get relevant range:
 	let range
-	if (!eraseAllDataInSheet) { // Parameter either not provided, or set to false.
-		range = sheet.getRange(startRow, startColumn, numRows, numColumns) // Assuming writeArray is rectangular.
+	if (!clearSheet) {
+		range = sheet.getRange(startRow, startColumn, numRows, numColumns)
+		// Check whether write should only take place if range is empty:
+		if (overwriteRange === false) {
+			if (!range.isBlank()) {
+				throw new Error(`Operation would overwrite existing data! Cancelling.`)
+			}
+		}		
 	} else {
 		range = sheet.getDataRange()
-	}
-	
-	// Check whether write should only take place if range is empty:
-	if (onlyWriteIfEmpty === true) {
-		if (!range.isBlank()) {
-			throw new Error(`Operation would overwrite existing data! Cancelling.`)
-		}
 	}
 	
 	// Clear appropriate range on sheet:
@@ -124,3 +106,4 @@ export function writeToSheet(
 	// Write output:
 	sheet.getRange(startRow, startColumn, numRows, numColumns).setValues(writeArray)
 }
+
