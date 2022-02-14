@@ -62,7 +62,7 @@ export function readSheet(
  * @param spreadsheet		Relevant Google Spreadsheet. Defaults to
  * 							active spreadsheet.
  * @param templateSheetName Name of sheet to use as template if sheet
- * 							<sheetName> has to be created.
+ * 							`sheetName` has to be created.
  * @param clearSheet		Whether to clear the sheet content, starting
  * 							at [startRow, startColumn]. Defaults to false.
  * 							Ignored if either startRow or startColumn
@@ -93,7 +93,13 @@ export function readSheet(
 		templateSheetName?: string;
 		clearSheet?: boolean;
 		overwriteRange?: boolean;
-	} = {},
+	} = {
+		startRow: 1,
+		startColumn: 1,
+		spreadsheet: SpreadsheetApp.getActiveSpreadsheet(),
+		clearSheet: false,
+		overwriteRange: true,
+	},
 ) {
 	const spreadsheetName = spreadsheet.getName();
 	let sheet = spreadsheet.getSheetByName(sheetName);
@@ -126,7 +132,7 @@ export function readSheet(
 	const numOutputColumns = writeArray[0].length;
 
 	// Check for negative startRow/startColumn, which imply "append":
-	const append = startRow < 0 || startColumn < 0;
+	const append = (startRow < 0) || (startColumn < 0);
 	if (startRow < 0) {
 		startRow = lastSheetRow + 1;
 	}
