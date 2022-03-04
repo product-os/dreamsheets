@@ -1,22 +1,24 @@
 {
-  "name": "@balena/gsheet-utils",
+  "name": "dreamsheets",
   "version": "0.10.1",
-  "description": "Common Apps Script / JS / TS functions used by balena data models in GSheet",
-  "homepage": "https://github.com/product-os/gsheet-utils#readme",
+  "description": "Make working with gsheets a dream",
+  "homepage": "https://product-os.github.io/dreamsheets",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "keywords": [
-    "balena",
+    "gsheets",
+    "google sheets",
+    "google-app-scripts",
     "typescript"
   ],
   "author": "",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/product-os/gsheet-utils.git"
+    "url": "git+https://github.com/product-os/dreamsheets.git"
   },
   "bugs": {
-    "url": "https://github.com/product-os/gsheet-utils/issues"
+    "url": "https://github.com/product-os/dreamsheets/issues"
   },
   "files": [
     "build/"
