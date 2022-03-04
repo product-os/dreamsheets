@@ -1,11 +1,9 @@
 <div align="center">
-  <img width="200" height="200" src="https://raw.githubusercontent.com/product-os/dreamsheets/master/icon.png">
+  <img width="400" height="auto" src="https://raw.githubusercontent.com/product-os/dreamsheets/master/icon.png">
   <br>
   <br>
 
 [![npm version](https://badge.fury.io/js/dreamsheets.svg)](https://badge.fury.io/js/dreamsheets)
-
-  <h1>DreamSheets</h1>
 
   <p>
     Makes working with Google sheets a dream!
