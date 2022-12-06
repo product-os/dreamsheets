@@ -1,0 +1,338 @@
+- commits:
+    - subject: Enable flowzone and update packages
+      hash: 81702e0ff5ef787e93e7a8e9289dc1a34beeb9a2
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: AlidaOdendaal <alida@balena.io>
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+      author: AlidaOdendaal
+      nested: []
+  version: 1.0.2
+  title: ""
+  date: 2022-12-06T21:42:41.393Z
+- version: 1.0.1
+  date: 2022-03-04T11:31:39Z
+  commits:
+    - hash: ef83bfcd0ee3c2289ad04010dbbbf15098606bcf
+      author: Lucian Buzzo
+      footers:
+        change-type: patch
+        signed-off-by: Lucian Buzzo <lucian.buzzo@gmail.com>
+      subject: "README: Fix width of head icon"
+      body: null
+- version: 1.0.0
+- date: 2022-03-04T11:23:27Z
+- commits:
+    - hash: 9a8a73a95999fafcb03407d45ba5c71ff2505a59
+- commits:
+    - author: Lucian Buzzo
+- commits:
+    - footers:
+        change-type: major
+- commits:
+    - footers:
+        signed-off-by: Lucian Buzzo <lucian.buzzo@gmail.com>
+- commits:
+    - subject: Change module name to dreamsheets
+- commits:
+    - body: |-
+        This change is a part of productising this repo, and includes an update
+        to the README.
+- version: 0.10.1
+- date: 2022-03-03T15:48:28Z
+- commits:
+    - hash: 4b236a277c3e71cfc44ae14af7eb2a14ba7730c9
+- commits:
+    - author: Lucian Buzzo
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Lucian Buzzo <lucian.buzzo@gmail.com>
+- commits:
+    - subject: Add automated typedoc site generation
+- commits:
+    - body: |-
+        This change adds a GitHub action that uses TypeDoc to automatically
+        generate API documentation and publish it with GitHub pages.
+- version: 0.10.0
+- date: 2021-12-07T10:52:35Z
+- commits:
+    - hash: 718645befc4de2ef4cb93923a51b40d9a529d87b
+- commits:
+    - author: AlidaOdendaal
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+- commits:
+    - subject: "spreadsheet: Reconfigure readSheet function"
+- commits:
+    - body: null
+- commits:
+    - hash: 3c135475419adf2de1d14c1cddda4a01f483af00
+- commits:
+    - author: AlidaOdendaal
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+- commits:
+    - subject: Allow tuples of different lengths in getRange, apply minor renaming
+- commits:
+    - body: null
+- version: 0.9.1
+- date: 2021-11-19T12:45:27Z
+- commits:
+    - hash: d6ddb1ac6f67840e63abdf00b32c4a16fd103829
+- commits:
+    - author: Pranas Ziaukas
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        connects-to: "#12"
+- commits:
+    - footers:
+        signed-off-by: Pranas Ziaukas <pranas@balena.io>
+- commits:
+    - subject: Bump `google-apps-script` typings
+- commits:
+    - body: null
+- version: 0.9.0
+- date: 2021-11-19T10:27:10Z
+- commits:
+    - hash: d691602d294d3f39b44cccdd003f2e97078f6b14
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: Revert "Expand data type validation based on "config" sheet"
+- commits:
+    - body: This reverts commit 1a0881445469d0c8f374ba256fa789fbaf97c0f2.
+- commits:
+    - hash: 766be71db36dae5e117c6bd697b9100dbbb23570
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: Revert "Modify code to enable config object to be exported to the
+        external model"
+- commits:
+    - body: This reverts commit 7355f9ef04853a9f9f652e6108001a444c93b287.
+- commits:
+    - hash: b5f0e203f315f44f04767e90041300e57576cf53
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: Revert "Add data validation through special "config" sheet"
+- commits:
+    - body: This reverts commit dc3cf3c59c6b1cae212a571e72aa5a06a1c700a6.
+- commits:
+    - hash: 3c466f25be7acbe8bb08664f24547fe55327a498
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: coerce `err` to be of type `Error`
+- commits:
+    - body: appeases newer tsc
+- version: 0.8.0
+- date: 2021-03-30T14:25:03Z
+- commits:
+    - hash: 1a0881445469d0c8f374ba256fa789fbaf97c0f2
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Expand data type validation based on "config" sheet
+- commits:
+    - body: null
+- version: 0.7.0
+- date: 2021-03-28T16:41:11Z
+- commits:
+    - hash: dc3cf3c59c6b1cae212a571e72aa5a06a1c700a6
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Add data validation through special "config" sheet
+- commits:
+    - body: null
+- commits:
+    - hash: 7355f9ef04853a9f9f652e6108001a444c93b287
+- commits:
+    - author: AlidaOdendaal
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+- commits:
+    - subject: Modify code to enable config object to be exported to the external model
+- commits:
+    - body: null
+- version: 0.6.0
+- date: 2021-03-25T20:50:58Z
+- commits:
+    - hash: 9193cb8647464b4497131aff51d7e118d7cb6c59
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: refactor for generality
+- commits:
+    - body: null
+- commits:
+    - hash: 2e0046cb7975f3d6dde2f3b5c0d23eefbd1bfdf1
+- commits:
+    - author: AlidaOdendaal
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+- commits:
+    - subject: "chai.ts: Change to default imports"
+- commits:
+    - body: null
+- version: 0.5.0
+- date: 2021-03-25T13:23:43Z
+- commits:
+    - hash: ae69810762acd482afddd128152c5648a22f802a
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: add generic function for reading content of tab
+- commits:
+    - body: null
+- version: 0.4.0
+- date: 2021-03-25T11:36:38Z
+- commits:
+    - hash: 38bd8d59ca3928686b9d53847d661c98d07288c3
+- commits:
+    - author: Somo
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: "doc: add Development CI-less local workflow instructions"
+- commits:
+    - body: null
+- version: 0.3.0
+- date: 2021-03-25T11:13:25Z
+- commits:
+    - hash: 60e816f93f707f8ebe7b6e6e484ab0c3a63c0283
+- commits:
+    - author: Somo Sakala
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo Sakala <somo@balena.io>
+- commits:
+    - subject: initial port of spreadsheet utilites from customer model
+- commits:
+    - body: https://github.com/company-os/customer-model/blob/v0.11.0/src/utils/spreadsheet.ts
+- version: 0.2.1
+- date: 2021-03-24T10:28:31Z
+- commits:
+    - hash: 49cbdebea2e30dc216fd31c57dc4b9cdfe351ab2
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Fix tests for parseRange
+- commits:
+    - body: null
+- version: 0.2.0
+- date: 2021-03-24T09:29:40Z
+- commits:
+    - hash: 2d33ac3d2011378ca746bba3c2b03ad5f4f22d58
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Add parseRange function (experimental)
+- commits:
+    - body: null
+- version: 0.1.1
+- date: 2021-03-23T14:49:07Z
+- commits:
+    - hash: a46671a369c85d1a32d6e759c4c0d16dcd6c81c5
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Add 'npm run lint' to 'build' script in package.json
+- commits:
+    - body: null
+- version: 0.1.0
+- date: 2021-03-23T11:34:39Z
+- commits:
+    - hash: 51300f0da7308fc1c1f886df7ae47e47ed907004
+- commits:
+    - author: Paulo Castro
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: Set npm package name and references in package.json
+- commits:
+    - body: null
