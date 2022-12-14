@@ -1,4 +1,18 @@
 - commits:
+    - subject: New writeToSheet function
+      hash: a91928261d69e5a0c434d589ce1c49edf2ecde71
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+        Signed-off-by: AlidaOdendaal <alida@balena.io>
+        signed-off-by: AlidaOdendaal <alida@balena.io>
+      author: AlidaOdendaal
+      nested: []
+  version: 2.0.0
+  title: ""
+  date: 2022-12-14T21:37:20.066Z
+- commits:
     - subject: Enable flowzone and update packages
       hash: 81702e0ff5ef787e93e7a8e9289dc1a34beeb9a2
       body: ""
