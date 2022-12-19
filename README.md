@@ -14,7 +14,7 @@
   <br>
 </div>
 
-Dreamsheets is a simple, easy to use, and powerful tool for managing your Google Sheets through Google App Scripts.
+Dreamsheets is a simple, easy to use, and powerful tool for managing your Google Sheets through Google Apps Script.
 
 ## Installation
 
