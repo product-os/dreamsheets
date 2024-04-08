@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin dependencies
+      hash: e8d2badb2b659be734f4f1ac2be69dfec83aa4cd
+      body: |
+        Update actions/checkout
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 2.0.2
+  title: ""
+  date: 2024-04-08T17:54:39.605Z
+- commits:
     - subject: Fix Google Apps Script typo in README.md
       hash: 04c359388e0ca8e6d6bc7a6496c3248ad41bb8fd
       body: ""
