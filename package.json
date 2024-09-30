@@ -1,6 +1,6 @@
 {
   "name": "dreamsheets",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Make working with gsheets a dream",
   "homepage": "https://product-os.github.io/dreamsheets",
   "main": "build/index.js",
@@ -52,6 +52,6 @@
     "typescript": "^4.9.3"
   },
   "versionist": {
-    "publishedAt": "2024-04-08T17:54:39.689Z"
+    "publishedAt": "2024-09-30T11:14:05.010Z"
   }
 }

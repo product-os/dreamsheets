@@ -1,4 +1,16 @@
 - commits:
+    - subject: "CI: Update checkout settings"
+      hash: 4970a3171798ac1ca70bbc6d4bdd75f58e0bae67
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 2.0.3
+  title: ""
+  date: 2024-09-30T11:14:04.935Z
+- commits:
     - subject: Pin dependencies
       hash: e8d2badb2b659be734f4f1ac2be69dfec83aa4cd
       body: |
